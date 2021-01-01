@@ -1,13 +1,15 @@
 <%- include('partials/header.ejs') %>
 
-<form class="my-5 py-5">
+<form class="my-5 py-5" id="login">
     <div class="form-group my-3">
         <label for="email">Email address</label>
-        <input type="text" class="form-control" id="email">
+        <input type="text" class="form-control" id="email" required>
+        <div class="email-error text-danger"></div>
     </div>
     <div class="form-group my-3">
         <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" aria-describedby="passwordHelp">
+        <input type="password" class="form-control" id="password" required>
+        <div class="password-error text-danger"></div>
     </div>
     <button type="submit" class="btn btn-primary my-3">Login</button>
 </form>

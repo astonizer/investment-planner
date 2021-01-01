@@ -1,19 +1,22 @@
 <%- include('partials/header.ejs') %>
 
-<form class="my-5 py-5">
+<form class="my-5 py-5" id="signup">
     <div class="form-group my-3">
       <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" aria-describedby="nameHelp">
+      <input type="text" class="form-control" id="name" aria-describedby="nameHelp" required>
       <small id="nameHelp" class="form-text text-muted">Name should be aphanumeric</small>
+      <div class="name-error text-danger"></div>
     </div>
     <div class="form-group my-3">
         <label for="email">Email address</label>
-        <input type="text" class="form-control" id="email">
+        <input type="text" class="form-control" id="email" required>
+        <div class="email-error text-danger"></div>
     </div>
     <div class="form-group my-3">
         <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" aria-describedby="passwordHelp">
+        <input type="password" class="form-control" id="password" aria-describedby="passwordHelp" required>
         <small id="passwordHelp" class="form-text text-muted">Password should be atleast 6 digits long</small>
+        <div class="password-error text-danger"></div>
     </div>
     <button type="submit" class="btn btn-primary my-3">SignUp</button>
 </form>

@@ -2,7 +2,10 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
+const cookieParser = require('cookie-parser');
+const { requireAuth, checkUser } = require('./middlewares/authMiddleware');
 
+// initializeing express app
 const app = express();
 
 const PORT = process.env.PORT;
@@ -11,6 +14,7 @@ const DBURI = process.env.DBURI;
 // middlewares
 app.use(express.static('public'));
 app.use(express.json());
+app.use(cookieParser());
 
 // view engine
 app.set('view engine', 'ejs');
@@ -24,11 +28,11 @@ mongoose.connect(DBURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         });  
     })
     .catch(err => {
-        console.log('Failed to connect to mongodb');
-        app.listen(PORT, () => {
-            console.log(`Server listening at port ${PORT}`);
-        });  
+        console.log(err);
     }) 
+
+// check user auth details before every request
+app.get('*', checkUser);
 
 // basic routes
 app.get('/', (req, res) => {
