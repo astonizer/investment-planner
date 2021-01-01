@@ -15,6 +15,7 @@ app.use(express.json());
 // view engine
 app.set('view engine', 'ejs');
 
+// connecting to db
 mongoose.connect(DBURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
     .then(result => {
         console.log('Connected to mongodb');
@@ -34,5 +35,18 @@ app.get('/', (req, res) => {
     res.render('home', { title: 'Home' });
 });
 
+app.get('/terms', (req, res) => {
+    res.render('terms', { title: 'Terms and Conditions' });
+});
+
+app.get('/about', (req, res) => {
+    res.render('about', { title: 'About' });
+});
+
 // auth routes
 app.use(authRoutes);
+
+// 404 page
+app.use((req, res) => {
+    res.render('404', { title: '404' });
+})
