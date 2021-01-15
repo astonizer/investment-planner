@@ -1,0 +1,30 @@
+<%- include('partials/header.ejs') %>
+</div>
+<table class="table table-bordered table-dark my-5 text-center">
+    <% if(data.length > 0) { %>
+        <thead class="my-5 h1">
+            <th scope="col">Sr no.</th>
+            <th scope="col">Symbol</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price(INR)</th>
+            <th scope="col">Quantity</th>
+        </thead>
+        <tbody>
+        <% data.map((asset, id) => { %>
+            <tr class="my-3 h3">
+                <th scope="row"><%= id+1 %></th>
+                <td><%= asset.Symbol %></td>
+                <td><%= asset.Name %></td>
+                <td><%= asset.Price %></td>
+                <td>Buy</td>
+            </tr>
+        <% }) %>
+        </tbody>
+    <% } else {%>
+        <div class="h3">
+            There was some error fetching the data. Try again.
+        </div>
+    <% } %>
+</table>
+<div>
+<%- include('partials/footer.ejs') %>

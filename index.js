@@ -1,9 +1,12 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const authRoutes = require('./routes/authRoutes');
 const cookieParser = require('cookie-parser');
 const { requireAuth, checkUser } = require('./middlewares/authMiddleware');
+
+// importing routes
+const authRoutes = require('./routes/authRoutes');
+const capRoutes = require('./routes/capRoutes');
 
 // initializeing express app
 const app = express();
@@ -39,6 +42,10 @@ app.get('/', (req, res) => {
     res.render('home', { title: 'Home' });
 });
 
+app.get('/begin', (req, res) => {
+    res.render('begin', { title: 'Begin'});
+});
+
 app.get('/terms', (req, res) => {
     res.render('terms', { title: 'Terms and Conditions' });
 });
@@ -49,6 +56,7 @@ app.get('/about', (req, res) => {
 
 // auth routes
 app.use(authRoutes);
+app.use('/cap', capRoutes);
 
 // 404 page
 app.use((req, res) => {

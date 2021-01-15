@@ -1,0 +1,207 @@
+[
+    {
+        "Name": "Resonance Speci.",
+        "Symbol": "RESONANCE.BO",
+        "Type": "small-cap"
+    },
+    {
+        "Name": "Tyche Industries",
+        "Symbol": "TYCHE.BO",
+        "Type": "small-cap"
+    },
+    {
+        "Name": "Sanmit Infra",
+        "Symbol": "SANINFRA.BO",
+        "Type": "small-cap"
+    },
+    {
+        "Name": "Coral India Fin.",
+        "Symbol": "CORALFINAC.BO",
+        "Type": "small-cap"
+    },
+    {
+        "Name": "Alembic",
+        "Symbol": "ALEMBICLTD.NS",
+        "Type": "small-cap"
+    },
+    {
+        "Name": "Atlas Jewellery",
+        "Symbol": "AJIL.BO",
+        "Type": "small-cap"
+    },
+    {
+        "Name": "Mercantile Vent.",
+        "Symbol": "MERCANTILE.BO",
+        "Type": "small-cap"
+    },
+    {
+        "Name": "Lotus Eye Hospit",
+        "Symbol": "LOTUSEYE.NS",
+        "Type": "small-cap"
+    },
+    {
+        "Name": "Oswal Agro Mills",
+        "Symbol": "OSWALAGRO.BO",
+        "Type": "small-cap"
+    },
+    {
+        "Name": "PTC India Limited",
+        "Symbol": "PTC.NS",
+        "Type": "small-cap"
+    },
+    {
+        "Name": "Pressman Advertising Limited",
+        "Symbol": "PRESSMN.NS",
+        "Type": "small-cap"
+    },
+    {
+        "Name": "Ador Fontech Limited",
+        "Symbol": "ADORFO.BO",
+        "Type": "small-cap"
+    },
+    {
+        "Name": "Bhagyanagar Properties Limited",
+        "Symbol": "BHAGYAPROP.BO",
+        "Type": "small-cap"
+    },
+    {
+        "Name": "The Andhra Petrochemicals Limited",
+        "Symbol": "ANDHRAPET.BO",
+        "Type": "small-cap"
+    },
+    {
+        "Name": "Manali Petrochemicals Limited",
+        "Symbol": "MANALIPETC.BO",
+        "Type": "small-cap"
+    },
+    {
+        "Name": "Kriti Industries (India) Limited",
+        "Symbol": "KRITIIND.BO",
+        "Type": "small-cap"
+    },
+    {
+        "Name": "Prime Securities",
+        "Symbol": "PRIMESECU.NS",
+        "Type": "mid-cap"
+    },
+    {
+        "Name": "Indian Energy Ex",
+        "Symbol": "IEX.NS",
+        "Type": "mid-cap"
+    },
+    {
+        "Name": "Sh. Digvijay Cem",
+        "Symbol": "SHREDIGCEM.BO",
+        "Type": "mid-cap"
+    },
+    {
+        "Name": "Nicco Parks",
+        "Symbol": "NICCOPAR.BO",
+        "Type": "mid-cap"
+    },
+    {
+        "Name": "Vinyl Chemicals",
+        "Symbol": "VINYLINDIA.NS",
+        "Type": "mid-cap"
+    },
+    {
+        "Name": "United Drilling",
+        "Symbol": "UNIDT.BO",
+        "Type": "mid-cap"
+    },
+    {
+        "Name": "Auro Laboratories Limited",
+        "Symbol": "AUROLAB.BO",
+        "Type": "mid-cap"
+    },
+    {
+        "Name": "The Federal Bank Limited",
+        "Symbol": "FEDERALBNK.NS",
+        "Type": "mid-cap"
+    },
+    {
+        "Name": "Vodafone Idea Limited",
+        "Symbol": "IDEA.NS",
+        "Type": "mid-cap"
+    },
+    {
+        "Name": "Alok Industries Limited",
+        "Symbol": "ALOKTEXT.BO",
+        "Type": "mid-cap"
+    },
+    {
+        "Name": "Bank of Baroda",
+        "Symbol": "BANKBARODA.BO",
+        "Type": "mid-cap"
+    },
+    {
+        "Name": "Dish TV India Limited",
+        "Symbol": "DISHTV.BO",
+        "Type": "mid-cap"
+    },
+    {
+        "Name": "Vedanta Limited",
+        "Symbol": "VEDL.BO",
+        "Type": "mid-cap"
+    },
+    {
+        "Name": "State Bank of India",
+        "Symbol": "SBIN.NS",
+        "Type": "large-cap"
+    },
+    {
+        "Name": "Axis Bank Limited",
+        "Symbol": "AXISBANK.BO",
+        "Type": "large-cap"
+    },
+    {
+        "Name": "Indian Oil Corporation Limited",
+        "Symbol": "IOC.BO",
+        "Type": "large-cap"
+    },
+    {
+        "Name": "NMDC Limited",
+        "Symbol": "NMDC.BO",
+        "Type": "large-cap"
+    },
+    {
+        "Name": "The Tata Power Company Limited",
+        "Symbol": "TATAPOWER.NS",
+        "Type": "large-cap"
+    },
+    {
+        "Name": "Gas Authority of India Limited",
+        "Symbol": "GAIL.NS",
+        "Type": "large-cap"
+    },
+    {
+        "Name": "Steel Authority of India Limited",
+        "Symbol": "SAIL.NS",
+        "Type": "large-cap"
+    },
+    {
+        "Name": "HDFC Bank Limited",
+        "Symbol": "HDFCBANK.BO",
+        "Type": "large-cap"
+    },
+    {
+        "Name": "Oil and Natural Gas Corporation Limited",
+        "Symbol": "ONGC.NS",
+        "Type": "large-cap"
+    },
+    {
+        "Name": "Infosys Limited",
+        "Symbol": "INFY.BO",
+        "Type": "large-cap"
+    },
+    {
+        "Name": "Wipro Limited",
+        "Symbol": "WIPRO.BO",
+        "Type": "large-cap"
+    },
+    {
+        "Name": "Bharat Heavy Electricals Limited",
+        "Symbol": "BHEL.NS",
+        "Type": "large-cap"
+    }
+]
