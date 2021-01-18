@@ -8,8 +8,9 @@ const { requireAuth, checkUser } = require('./middlewares/authMiddleware');
 const authRoutes = require('./routes/authRoutes');
 const capRoutes = require('./routes/capRoutes');
 const inputRoutes = require('./routes/inputRoutes');
+const optimizationRoutes = require('./routes/optimizationRoutes');
 
-// initializeing express app
+// initializing express app
 const app = express();
 
 const PORT = process.env.PORT;
@@ -64,6 +65,9 @@ app.use('/cap', requireAuth, capRoutes);
 
 // input routes
 app.use('/input', requireAuth, inputRoutes);
+
+// optimization routes
+app.use('/optimization', requireAuth, optimizationRoutes);
 
 // 404 page
 app.use((req, res) => {

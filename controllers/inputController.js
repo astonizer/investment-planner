@@ -6,20 +6,22 @@ inputCustom_get = (req, res) => {
     allStocks.map(stock => {
         data = [...data, stock.Symbol];
     });
+    data.sort();
     res.render('input', { title: 'Customize', data });
 };
 
 inputCustom_post = (req, res) => {
-    console.log('Custom data');
-    res.redirect('/');
+    console.log(req.body);
+    res.json('{success:true}');
 };
 
 inputFeatured_get = (req, res) => {
+    featuredStocks.sort();
     res.render('input', { title: 'Featured', data: featuredStocks });
 };
 
 inputFeatured_post = (req, res) => {
-    console.log('Featured data');
+    console.log(req.body);
     res.redirect('/');
 };
 

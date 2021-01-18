@@ -1,11 +1,30 @@
 <%- include('partials/header.ejs') %>
 
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Select atleast 5 stocks for precised optimization
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+</div>
+
 <h1 class="my-5">Get portfolios designed specifically as per your needs</h1>
 
-<form>
+<form id="<%= title==='Customize'?'custom':'featured' %>StocksForm">
     <div class="form-group">
         <label for="inputMoney">Enter the amount of money you wish to invest</label>
-        <input type="number" class="form-control" id="inputMoney" aria-describedby="moneyHelp" min="1000" value="1000">
+        <input type="number" name="money" class="form-control" id="inputMoney" aria-describedby="moneyHelp" min="1000" value="1000"></input>
         <small id="moneyHelp" class="form-text text-muted">Minimum amount is 1000 INR</small>
     </div>
     <div class="container">
@@ -23,7 +42,8 @@
         <% }) %>
     </div>
     <div class="text-center">
-        <button type="submit" class="btn btn-info btn-lg justify-content-center my-5 px-4">Optimize</button>
+        <button class="btn btn-info btn-lg justify-content-center my-5 px-4">Optimize</button>
     </div>
 </form>
+
 <%- include('partials/footer.ejs') %>

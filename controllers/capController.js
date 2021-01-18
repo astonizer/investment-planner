@@ -12,7 +12,8 @@ smallCap_get = async (req, res) => {
     async.map(data, (async asset => {
         if(asset.Type === "small-cap") {
             // asset.Price = await yahooStockPrices.getHistoricalPrices(startMonth, startDay, startYear, endMonth, endDay, endYear, asset.Symbol, '1d');
-            asset.Price = await yahooStockPrices.getCurrentPrice(asset.Symbol);
+            // asset.Price = await yahooStockPrices.getCurrentPrice(asset.Symbol);
+            asset.Price = 12;
             smallCapData = [...smallCapData, asset];
         }
     }), (err, result) => {

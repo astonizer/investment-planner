@@ -74,4 +74,31 @@ $(document).ready(function() {
             console.log(err);
         }
     });
+
+    // $('#customStocksForm').submit(function(e) {
+    //     e.preventDefault();
+
+        // let selectedStocks = [];
+        // $.each($("input[type='checkbox']:checked"), function(){
+        //     selectedStocks.push($(this).val());
+        // });
+        // alert("My favourite sports are: " + selectedStocks.join(", "));
+    
+        // try {
+        //     const res = await fetch('/input/custom', {
+        //         method: 'POST',
+        //         body: JSON.stringify({ type: 'hello' }),
+        //         headers: { 'Content-Type': 'application/json' }
+        //     });
+        //     const data = await res.json();
+
+        //     if(data.success)
+        //         location.assign('/');
+        // }
+        // catch(err) {
+        //     console.log(err);
+    //     // }
+    // });
+
+    // $('#errorModal').modal(options)
 });
