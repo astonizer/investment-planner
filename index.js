@@ -17,6 +17,7 @@ const DBURI = process.env.DBURI;
 // middlewares
 app.use(express.static('public'));
 app.use(express.json());
+app.use(express.urlencoded({extended: true}))
 app.use(cookieParser());
 
 // view engine
@@ -42,8 +43,8 @@ app.get('/', (req, res) => {
     res.render('home', { title: 'Home' });
 });
 
-app.get('/begin', (req, res) => {
-    res.render('begin', { title: 'Begin'});
+app.get('/cap', (req, res) => {
+    res.render('cap', { title: 'Cap'});
 });
 
 app.get('/terms', (req, res) => {
@@ -56,7 +57,9 @@ app.get('/about', (req, res) => {
 
 // auth routes
 app.use(authRoutes);
-app.use('/cap', capRoutes);
+
+// investing routes
+app.use('/cap', requireAuth, capRoutes);
 
 // 404 page
 app.use((req, res) => {

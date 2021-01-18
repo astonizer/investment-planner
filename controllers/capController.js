@@ -1,6 +1,11 @@
+require('dotenv').config();
 const data = require('../data/data.json');
 const yahooStockPrices = require('yahoo-stock-prices');
 const async = require('async');
+const jwt = require('jsonwebtoken');
+const User = require('../models/User');
+
+const SECRET_KEY = process.env.SECRET;
 
 smallCap_get = async (req, res) => {
     let smallCapData = [];
@@ -10,7 +15,8 @@ smallCap_get = async (req, res) => {
     async.map(data, (async asset => {
         if(asset.Type === "small-cap") {
             // asset.Price = await yahooStockPrices.getHistoricalPrices(startMonth, startDay, startYear, endMonth, endDay, endYear, asset.Symbol, '1d');
-            asset.Price = await yahooStockPrices.getCurrentPrice(asset.Symbol);
+            // asset.Price = await yahooStockPrices.getCurrentPrice(asset.Symbol);
+            asset.Price = 12;
             smallCapData = [...smallCapData, asset];
         }
     }), (err, result) => {
@@ -20,10 +26,39 @@ smallCap_get = async (req, res) => {
         }
         else {
             res.render('assets', { title: 'Small Cap', data: smallCapData });
-            console.log(smallCapData);
         }
     });
 };
+
+smallCap_post = (req, res) => {
+    let { quantity, asset } = req.body;
+
+    // get user details
+    try {
+        const token = req.cookies.jwt;
+        
+        // verification of token
+        if(token) {
+            jwt.verify(token, SECRET_KEY, async (err, decodedToken) => {
+                if(err) {
+                    console.error(err);
+                    res.redirect('/cap/small');
+                } else {
+                    console.log(decodedToken);
+                    let user = await User.findById(decodedToken.id);\
+                    res.redirect('/');
+                }
+            });
+        } else {
+            console.error('Token verification failed');
+            res.redirect('/cap/small');
+        }
+    } 
+    catch(err) {
+        console.error(err);
+        res.redirect('/cap/small');
+    }
+}
 
 midCap_get = (req, res) => {
     let midCapData = [];
@@ -40,10 +75,13 @@ midCap_get = (req, res) => {
         }
         else {
             res.render('assets', { title: 'Mid Cap', data: midCapData });
-            console.log(smallCapData);
         }
     });
 };
+
+midCap_post = (req, res) => {
+    res.redirect('/cap/mid');
+}
 
 largeCap_get = (req, res) => {
     let largeCapData = [];
@@ -65,13 +103,19 @@ largeCap_get = (req, res) => {
         }
         else {    
             res.render('assets', { title: 'Large Cap', data: largeCapData });
-            console.log(smallCapData);
         }
     });
 };
 
+largeCap_post = (req, res) => {
+    res.redirect('/cap/large');
+}
+
 module.exports = {
     smallCap_get,
+    smallCap_post,
     midCap_get,
-    largeCap_get
+    midCap_post,
+    largeCap_get,
+    largeCap_post
 }
