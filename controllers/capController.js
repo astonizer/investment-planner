@@ -9,14 +9,10 @@ const SECRET_KEY = process.env.SECRET;
 
 smallCap_get = async (req, res) => {
     let smallCapData = [];
-    // const date = new Date();
-    // let startYear = 2000, startMonth = 0, startDay = 1;
-    // let endYear = date.getFullYear(), endMonth = date.getMonth(), endDay = date.getDate();
     async.map(data, (async asset => {
         if(asset.Type === "small-cap") {
             // asset.Price = await yahooStockPrices.getHistoricalPrices(startMonth, startDay, startYear, endMonth, endDay, endYear, asset.Symbol, '1d');
-            // asset.Price = await yahooStockPrices.getCurrentPrice(asset.Symbol);
-            asset.Price = 12;
+            asset.Price = await yahooStockPrices.getCurrentPrice(asset.Symbol);
             smallCapData = [...smallCapData, asset];
         }
     }), (err, result) => {
@@ -31,7 +27,13 @@ smallCap_get = async (req, res) => {
 };
 
 smallCap_post = (req, res) => {
-    let { quantity, asset } = req.body;
+    let { quantity, asset, price } = req.body;
+    let investment = {
+        asset,
+        price, 
+        quantity,
+        time: Date.now()
+    };
 
     // get user details
     try {
@@ -45,8 +47,19 @@ smallCap_post = (req, res) => {
                     res.redirect('/cap/small');
                 } else {
                     console.log(decodedToken);
-                    let user = await User.findById(decodedToken.id);\
-                    res.redirect('/');
+
+                    // add investment into history
+                    try {
+                        User.updateOne(
+                            { _id: decodedToken.id }, 
+                            { $push: { investments: investment } },
+                            () => { res.redirect('/') }
+                        );
+                    } 
+                    catch(err) {
+                        console.error(err);
+                        res.redirect('/cap/small');
+                    }
                 }
             });
         } else {
@@ -80,7 +93,50 @@ midCap_get = (req, res) => {
 };
 
 midCap_post = (req, res) => {
-    res.redirect('/cap/mid');
+    let { quantity, asset, price } = req.body;
+    let investment = {
+        asset,
+        price, 
+        quantity,
+        time: Date.now()
+    };
+
+    // get user details
+    try {
+        const token = req.cookies.jwt;
+        
+        // verification of token
+        if(token) {
+            jwt.verify(token, SECRET_KEY, async (err, decodedToken) => {
+                if(err) {
+                    console.error(err);
+                    res.redirect('/cap/mid');
+                } else {
+                    console.log(decodedToken);
+
+                    // add investment into history
+                    try {
+                        User.updateOne(
+                            { _id: decodedToken.id }, 
+                            { $push: { investments: investment } },
+                            () => { res.redirect('/') }
+                        );
+                    } 
+                    catch(err) {
+                        console.error(err);
+                        res.redirect('/cap/mid');
+                    }
+                }
+            });
+        } else {
+            console.error('Token verification failed');
+            res.redirect('/cap/mid');
+        }
+    } 
+    catch(err) {
+        console.error(err);
+        res.redirect('/cap/small');
+    }
 }
 
 largeCap_get = (req, res) => {
@@ -108,7 +164,50 @@ largeCap_get = (req, res) => {
 };
 
 largeCap_post = (req, res) => {
-    res.redirect('/cap/large');
+    let { quantity, asset, price } = req.body;
+    let investment = {
+        asset,
+        price, 
+        quantity,
+        time: Date.now()
+    };
+
+    // get user details
+    try {
+        const token = req.cookies.jwt;
+        
+        // verification of token
+        if(token) {
+            jwt.verify(token, SECRET_KEY, async (err, decodedToken) => {
+                if(err) {
+                    console.error(err);
+                    res.redirect('/cap/large');
+                } else {
+                    console.log(decodedToken);
+
+                    // add investment into history
+                    try {
+                        User.updateOne(
+                            { _id: decodedToken.id }, 
+                            { $push: { investments: investment } },
+                            () => { res.redirect('/') }
+                        );
+                    } 
+                    catch(err) {
+                        console.error(err);
+                        res.redirect('/cap/large');
+                    }
+                }
+            });
+        } else {
+            console.error('Token verification failed');
+            res.redirect('/cap/large');
+        }
+    } 
+    catch(err) {
+        console.error(err);
+        res.redirect('/cap/large');
+    }
 }
 
 module.exports = {

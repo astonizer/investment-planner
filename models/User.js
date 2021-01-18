@@ -2,6 +2,23 @@ const mongoose = require('mongoose');
 const { isAlpha, isEmail } = require('validator');
 const bcrypt = require('bcrypt');
 
+// schema for a user's investments
+const investmentSchema = new mongoose.Schema({
+    asset: {
+        type: String
+    },
+    price: {
+        type: Number
+    },
+    quantity: {
+        type: Number
+    },
+    time: {
+        type: Number
+    }
+});
+
+// schema for the user itself
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -18,7 +35,8 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please enter a password'],
         minlength: [6, 'Please enter a password with atleast 6 characters']
-    }
+    },
+    investments : [investmentSchema]
 });
 
 // hashing passwords before saving to db
