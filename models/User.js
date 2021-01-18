@@ -13,7 +13,29 @@ const investmentSchema = new mongoose.Schema({
     quantity: {
         type: Number
     },
-    time: {
+    date: {
+        type: Number
+    }
+});
+
+// schema for user's returns
+const returnSchema = new mongoose.Schema({
+    asset: {
+        type: String
+    },
+    buyPrice: {
+        type: Number
+    },
+    sellPrice: {
+        type: Number
+    },
+    quantity: {
+        type: Number
+    },
+    buyDate: {
+        type: Number
+    },
+    sellDate: {
         type: Number
     }
 });
@@ -36,7 +58,8 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Please enter a password'],
         minlength: [6, 'Please enter a password with atleast 6 characters']
     },
-    investments : [investmentSchema]
+    investments : [investmentSchema],
+    returns: [returnSchema]
 });
 
 // hashing passwords before saving to db

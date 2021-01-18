@@ -32,7 +32,7 @@ smallCap_post = (req, res) => {
         asset,
         price, 
         quantity,
-        time: Date.now()
+        date: Date.now()
     };
 
     // get user details
@@ -98,7 +98,7 @@ midCap_post = (req, res) => {
         asset,
         price, 
         quantity,
-        time: Date.now()
+        date: Date.now()
     };
 
     // get user details
@@ -169,7 +169,7 @@ largeCap_post = (req, res) => {
         asset,
         price, 
         quantity,
-        time: Date.now()
+        date: Date.now()
     };
 
     // get user details

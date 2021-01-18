@@ -7,6 +7,7 @@ const { requireAuth, checkUser } = require('./middlewares/authMiddleware');
 // importing routes
 const authRoutes = require('./routes/authRoutes');
 const capRoutes = require('./routes/capRoutes');
+const inputRoutes = require('./routes/inputRoutes');
 
 // initializeing express app
 const app = express();
@@ -60,6 +61,9 @@ app.use(authRoutes);
 
 // investing routes
 app.use('/cap', requireAuth, capRoutes);
+
+// input routes
+app.use('/input', requireAuth, inputRoutes);
 
 // 404 page
 app.use((req, res) => {
