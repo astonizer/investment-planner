@@ -11,8 +11,17 @@ inputCustom_get = (req, res) => {
 };
 
 inputCustom_post = (req, res) => {
-    console.log(req.body);
-    res.json('{success:true}');
+    const { money, stocks } = req.body;
+    if(stocks) {
+        if(stocks.length<5) {
+            console.error("Enough stocks not selected");
+        } else {
+            
+        }
+    } else {
+        console.error("No stocks selected");
+    }
+    res.redirect('/input/custom');
 };
 
 inputFeatured_get = (req, res) => {
