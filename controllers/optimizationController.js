@@ -12,7 +12,38 @@ customOptimization_get = (req, res) => {
 };
 
 customOptimization_post = (req, res) => {
-    console.log('Posted stocks');
+    console.log(req.body);
+
+    // get all the selected stocks
+    const { stocks, money } = req.body;
+
+    // let adjCloseForSelectedStocks = [];
+    // async.map(stocks, (async stock => {
+    //     let adjCloseForCurrentStock = [];
+    //     yahooStocks.getHistoricalPrices(startMonth, startDay, startYear, endMonth, endDay, endYear, stock, "1d")
+    //         .then(priceArray => {
+    //             priceArray.map(pricing => {
+    //                 adjCloseForCurrentStock = [...adjCloseForCurrentStock, pricing.adjclose];
+    //             })
+    //         })
+    //         .then(res => {
+    //             // get percent change of individual stock
+                
+    //         })
+    //         .catch(err => {
+    //             console.error(err);
+    //             console.error('Failed to fetch closing prices');
+    //         })
+    // }), (err, result) => {
+    //     if(err) {
+    //         console.error(err);
+    //         console.error('Selected stocks mapping failed!');
+    //     }
+    //     else {
+    //         console.log('result', adjClose);
+    //     }
+    // });
+
     res.redirect('/');
 }
 
@@ -22,7 +53,38 @@ featuredOptimization_get = (req, res) => {
 };
 
 featuredOptimization_post = (req, res) => {
-    console.log('Posted stocks');
+    console.log(req.body);
+
+    // get all the selected stocks
+    const { stocks, money } = req.body;
+
+    // let adjCloseForSelectedStocks = [];
+    // async.map(stocks, (async stock => {
+    //     let adjCloseForCurrentStock = [];
+    //     yahooStocks.getHistoricalPrices(startMonth, startDay, startYear, endMonth, endDay, endYear, stock, "1d")
+    //         .then(priceArray => {
+    //             priceArray.map(pricing => {
+    //                 adjCloseForCurrentStock = [...adjCloseForCurrentStock, pricing.adjclose];
+    //             })
+    //         })
+    //         .then(res => {
+    //             // get percent change of individual stock
+                
+    //         })
+    //         .catch(err => {
+    //             console.error(err);
+    //             console.error('Failed to fetch closing prices');
+    //         })
+    // }), (err, result) => {
+    //     if(err) {
+    //         console.error(err);
+    //         console.error('Selected stocks mapping failed!');
+    //     }
+    //     else {
+    //         console.log('result', adjClose);
+    //     }
+    // });
+
     res.redirect('/');
 }
 

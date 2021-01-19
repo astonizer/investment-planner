@@ -21,7 +21,7 @@
 
 <h1 class="my-5">Get portfolios designed specifically as per your needs</h1>
 
-<form id="<%= title==='Customize'?'custom':'featured' %>StocksForm" method="POST" action="/input/<%= title==='Customize'?'custom':'featured' %>">
+<form id="<%= title==='Customize'?'custom':'featured' %>StocksForm" method="POST" action="/optimization/<%= title==='Customize'?'custom':'featured' %>">
     <div class="form-group">
         <label for="inputMoney">Enter the amount of money you wish to invest</label>
         <input type="number" name="money" class="form-control" id="inputMoney" aria-describedby="moneyHelp" min="1000" value="1000"></input>
