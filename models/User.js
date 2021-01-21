@@ -14,7 +14,10 @@ const investmentSchema = new mongoose.Schema({
         type: Number
     },
     date: {
-        type: Number
+        type: String
+    },
+    type: {
+        type: String
     }
 });
 
