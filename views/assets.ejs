@@ -1,5 +1,6 @@
 <%- include('partials/header.ejs') %>
 </div>
+<h3 class="my-3">Note: You can only buy one asset at a time!</h3>
 <table class="table table-bordered table-dark my-5 text-center">
     <% if(data.length > 0) { %>
         <thead class="my-5 h1">
@@ -23,7 +24,7 @@
                                 <input type="number" name="quantity" class="form-control asset-value" placeholder="Quantity" min="1">
                             </div>
                             <input type="hidden" class="hidden_symbol" name="asset" value="<%= asset.Symbol %>"></input>
-                            <input type="hidden" class="hidden_symbol" name="price" value="<%= asset.Price %>"></input>
+                            <input type="hidden" class="hidden_symbol" name="buyPrice" value="<%= asset.Price %>"></input>
                             <div class="col-auto">
                                 <button class="btn btn-primary">Buy</button>
                             </div>

@@ -1,23 +1,20 @@
 require('dotenv').config();
 const data = require('../data/data.json');
-const yahooStockPrices = require('yahoo-stock-prices');
 const async = require('async');
 const jwt = require('jsonwebtoken');
+const axios = require('axios');
 const User = require('../models/User');
 
 const SECRET_KEY = process.env.SECRET;
 
-// fetch current date
+// Get current date
 const date = new Date();
-const startMonth = date.getMonth()+1, startYear = date.getFullYear(), startDay = date.getDate();
+const currentDate = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
 
 smallCap_get = async (req, res) => {
     let smallCapData = [];
     async.map(data, (async asset => {
         if(asset.Type === "small-cap") {
-            // asset.Price = await yahooStockPrices.getHistoricalPrices(startMonth, startDay, startYear, endMonth, endDay, endYear, asset.Symbol, '1d');
-            // asset.Price = await yahooStockPrices.getCurrentPrice(asset.Symbol);
-            asset.Price = 12;
             smallCapData = [...smallCapData, asset];
         }
     }), (err, result) => {
@@ -26,19 +23,33 @@ smallCap_get = async (req, res) => {
             res.render('assets', { title: 'Small Cap', data: smallCapData });
         }
         else {
-            res.render('assets', { title: 'Small Cap', data: smallCapData });
+            axios({
+                method: 'POST',
+                url: 'https://yfinance-node.herokuapp.com/stocks',
+                data: smallCapData
+            })
+            .then(response => {
+                smallCapData.map((smallAsset, id) => {
+                    smallAsset.Price = response.data[id];
+                });
+                res.render('assets', { title: 'Small Cap', data: smallCapData });
+            })
+            .catch(err => {
+                console.error(err);
+
+                res.render('error', { title: 'Server Error' });
+            });
         }
     });
 };
 
 smallCap_post = (req, res) => {
-    let { quantity, asset, price } = req.body;
+    let { quantity, asset, buyPrice } = req.body;
     let investment = {
         asset,
-        price, 
+        buyPrice, 
         quantity,
-        date: startDay + '-' + startMonth + '-' + startYear,
-        type: 'Small Cap'
+        date: currentDate
     };
 
     // get user details
@@ -83,9 +94,6 @@ midCap_get = (req, res) => {
     let midCapData = [];
     async.map(data, (async asset => {
         if(asset.Type === "mid-cap") {
-            // asset.Price = await yahooStockPrices.getHistoricalPrices(startMonth, startDay, startYear, endMonth, endDay, endYear, asset.Symbol, '1d');
-            // asset.Price = await yahooStockPrices.getCurrentPrice(asset.Symbol);
-            asset.Price = 22;
             midCapData = [...midCapData, asset];
         }
     }), (err, result) => {
@@ -94,19 +102,32 @@ midCap_get = (req, res) => {
             res.render('assets', { title: 'Mid Cap', data: midCapData });
         }
         else {
-            res.render('assets', { title: 'Mid Cap', data: midCapData });
+            axios({
+                method: 'POST',
+                url: 'https://yfinance-node.herokuapp.com/stocks',
+                data: midCapData
+            })
+            .then(response => {
+                midCapData.map((midAsset, id) => {
+                    midAsset.Price = response.data[id];
+                });
+                res.render('assets', { title: 'Small Cap', data: midCapData });
+            })
+            .catch(err => {
+                console.error(err);
+                res.render('error', { title: 'Server Error' });
+            });
         }
     });
 };
 
 midCap_post = (req, res) => {
-    let { quantity, asset, price } = req.body;
+    let { quantity, asset, buyPrice } = req.body;
     let investment = {
         asset,
-        price, 
+        buyPrice, 
         quantity,
-        date: startDay + '-' + startMonth + '-' + startYear,
-        type: 'Small Cap'
+        date: currentDate
     };
 
     // get user details
@@ -156,9 +177,6 @@ largeCap_get = (req, res) => {
     });
     async.map(data, (async asset => {
         if(asset.Type === "large-cap") {
-            // asset.Price = await yahooStockPrices.getHistoricalPrices(startMonth, startDay, startYear, endMonth, endDay, endYear, asset.Symbol, '1d');
-            // asset.Price = await yahooStockPrices.getCurrentPrice(asset.Symbol);
-            asset.Price = 32;
             largeCapData = [...largeCapData, asset];
         }
     }), (err, result) => {
@@ -167,19 +185,32 @@ largeCap_get = (req, res) => {
             res.render('assets', { title: 'Large Cap', data: largeCapData });
         }
         else {    
-            res.render('assets', { title: 'Large Cap', data: largeCapData });
+            axios({
+                method: 'POST',
+                url: 'https://yfinance-node.herokuapp.com/stocks',
+                data: largeCapData
+            })
+            .then(response => {
+                largeCapData.map((largeAsset, id) => {
+                    largeAsset.Price = response.data[id];
+                });
+                res.render('assets', { title: 'Small Cap', data: largeCapData });
+            })
+            .catch(err => {
+                console.error(err);
+                res.render('error', { title: 'Server Error' });
+            });
         }
     });
 };
 
 largeCap_post = (req, res) => {
-    let { quantity, asset, price } = req.body;
+    let { quantity, asset, buyPrice } = req.body;
     let investment = {
         asset,
-        price, 
+        buyPrice, 
         quantity,
-        date: startDay + '-' + startMonth + '-' + startYear,
-        type: 'Small Cap'
+        date: currentDate
     };
 
     // get user details
