@@ -46,10 +46,11 @@ smallCap_get = async (req, res) => {
 smallCap_post = (req, res) => {
     let { quantity, asset, buyPrice } = req.body;
     let investment = {
-        asset,
+        Symbol: asset,
         buyPrice, 
-        quantity,
-        date: currentDate
+        Type: 'small-cap',
+        Quantity: quantity,
+        Date: currentDate
     };
 
     // get user details
@@ -124,10 +125,11 @@ midCap_get = (req, res) => {
 midCap_post = (req, res) => {
     let { quantity, asset, buyPrice } = req.body;
     let investment = {
-        asset,
+        Symbol: asset,
         buyPrice, 
-        quantity,
-        date: currentDate
+        Type: 'mid-cap',
+        Quantity: quantity,
+        Date: currentDate
     };
 
     // get user details
@@ -207,10 +209,11 @@ largeCap_get = (req, res) => {
 largeCap_post = (req, res) => {
     let { quantity, asset, buyPrice } = req.body;
     let investment = {
-        asset,
+        Symbol: asset,
         buyPrice, 
-        quantity,
-        date: currentDate
+        Type: 'large-cap',
+        Quantity: quantity,
+        Date: currentDate
     };
 
     // get user details

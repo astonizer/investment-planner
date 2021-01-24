@@ -3,6 +3,7 @@ const sellController = require('../controllers/sellController');
 
 const router = Router();
 
-router.post('/signup', sellController.sell_post);
+// routes defined as /sell/<route>
+router.post('/asset', sellController.sell_post);
 
 module.exports = router;

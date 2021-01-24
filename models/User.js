@@ -4,18 +4,20 @@ const bcrypt = require('bcrypt');
 
 // schema for a user's investments
 const investmentSchema = new mongoose.Schema({
-    asset: String,
+    Symbol: String,
+    Type: String,
     buyPrice: Number,
-    quantity: Number,
-    date: String
+    Quantity: Number,
+    Date: String
 });
 
 // schema for user's returns
 const returnSchema = new mongoose.Schema({
-    asset: String,
+    Symbol: String,
+    Type: String,
     buyPrice: Number,
     sellPrice: Number,
-    quantity: Number,
+    Quantity: Number,
     buyDate: String,
     sellDate: String
 });

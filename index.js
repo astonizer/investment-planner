@@ -13,7 +13,7 @@ const portfolioRoutes = require('./routes/portfolioRoutes');
 // initializing express app
 const app = express();
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 const DBURI = process.env.DBURI;
 
 // middlewares
