@@ -1,0 +1,64 @@
+<%- include('partials/header.ejs') %>
+
+<div class="my-5 text-center">
+    <h3>Total Investments : <%= total_investments %> INR</h1>
+    <% if(net_pl >= total) { %>
+        <% let diff = net_pl - total %>
+        <h3>Net Asset Value (NAV) : <%= net_pl %> INR <span class="text-success">(+<%= diff %>)</span></h3>
+    <% } else { %>
+        <% let diff = total - net_pl %>
+        <h3>Net Asset Value (NAV) : <%= net_pl %> INR <span class="text-danger">(-<%= diff %>)</span></h3>
+    <% } %>
+    <h3>Return on Investment (ROI): <%= roi %> %</h3>
+    <h3>Compound Annual Growth Rate (CAGR): <%= cagr %> %</h3>
+    <br><br>
+
+    <table class="table table-bordered table-dark my-5 text-center">
+        <thead>
+            <tr>
+                <th scope="col">S. No.</th>
+                <th scope="col">Date</th>
+                <th scope="col">Symbol</th>
+                <th scope="col">Category</th>
+                <th scope="col">Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Buying Price(INR)</th>
+                <th scope="col">Current Price(INR)</th>
+                <th scope="col">% Change</th>
+                <th scope="col">Beta</th>
+                <th scope="col">Sell</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% user_investments.map((investment, id) => { %>
+                <tr>
+                <th scope="row"><%= id+1 %></th>
+                <td><%= date[id] %></td>
+                <td><%= symbol[id] %></td>
+                <td><%= type[id] %></td>
+                <td><a href="#"><%= investment.asset %></a></td>
+                <td><%= investment.quantity %></td>
+                <td><%= investment.buy_price %></td>
+                <td><%= price[id] %></td>
+                <td><%= pchange[id] %></td>
+                <td><%= beta[id] %></td>
+                <td>
+                    <form action="#" method="POST">
+                    <div class="form-row align-items-center">
+                        <div class="col-auto">
+                        <input type="number" name="quantity" class="form-control mb-2" placeholder="Quantity" min="1" max="{{i.quantity}}">
+                        </div>
+                        <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-2">Sell</button>
+                        </div>
+                    </div>
+                    </form>
+                </td>
+                </tr>
+            <% }); %>
+        </tbody>
+      </table>
+    
+</div>
+
+<%- include('partials/footer.ejs') %>

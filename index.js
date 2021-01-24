@@ -7,8 +7,8 @@ const { requireAuth, checkUser } = require('./middlewares/authMiddleware');
 // importing routes
 const authRoutes = require('./routes/authRoutes');
 const capRoutes = require('./routes/capRoutes');
-const inputRoutes = require('./routes/inputRoutes');
-const optimizationRoutes = require('./routes/optimizationRoutes');
+const sellRoutes = require('./routes/sellRoutes');
+const portfolioRoutes = require('./routes/portfolioRoutes');
 
 // initializing express app
 const app = express();
@@ -63,11 +63,11 @@ app.use(authRoutes);
 // investing routes
 app.use('/cap', requireAuth, capRoutes);
 
-// input routes
-app.use('/input', requireAuth, inputRoutes);
+// selling routes
+app.use('/sell', requireAuth, sellRoutes);
 
-// optimization routes
-app.use('/optimization', requireAuth, optimizationRoutes);
+// portfolio routes
+app.use('/portfolio', requireAuth, portfolioRoutes);
 
 // 404 page
 app.use((req, res) => {
