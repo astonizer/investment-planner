@@ -1,0 +1,43 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container text-center my-3">
+    <% if(data.net_pl >= 0) { %>
+        <h3 style="color: green;">Net Profit : <%= data.net_pl %> INR</h3>
+    <% } else { %>
+        <% let loss = data.net_pl * (-1) %>
+        <h3 style="color: red;">Net Loss : <%= data.loss %> INR</h3>
+    <% } %>
+</div>
+
+<table class="table table-bordered table-dark my-3 text-center">
+  <thead>
+    <tr>
+      <th scope="col">S. No.</th>
+      <th scope="col">Buy Date</th>
+      <th scope="col">Sell Date</th>
+      <th scope="col">Asset</th>
+      <th scope="col">Category</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Buying Price(INR)</th>
+      <th scope="col">Selling Price(INR)</th>
+      <th scope="col">% Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let id = 0; id < returns.length; id++) { %>
+      <tr>
+        <th scope="row"><%= id+1 %></th>
+        <td scope="row"><%= returns[id].buyDate %></td>
+        <td><%= returns[id].sellDate %></td>
+        <td><a href = "#"><%= returns[id].Symbol %></a></td>
+        <td><%= returns[id].Type %></td>
+        <td><%= returns[id].Quantity %></td>
+        <td><%= returns[id].buyPrice %></td>
+        <td><%= returns[id].sellPrice %></td>
+        <td><%= data.percent_change[id] %></td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<%- include('partials/footer.ejs') %>

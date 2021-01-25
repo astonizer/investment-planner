@@ -40,6 +40,46 @@ investment_get = async (req, res) => {
     }
 }
 
+return_get = async (req, res) => {
+    const token = req.cookies.jwt;
+
+    // verification of token
+    if(token) {
+        jwt.verify(token, SECRET_KEY, async (err, decodedToken) => {
+            if(err) {
+                console.error(err.message);
+                res.redirect('/');
+            } else {
+                console.log(decodedToken);
+                
+                // fetch the returns of user from db
+                const { returns } = await User.findById(decodedToken.id);
+                const data = {
+                    Returns: returns
+                };
+                
+                // fetch returns analysis from api
+                axios({
+                    method: 'POST',
+                    url: 'https://yfinance-node.herokuapp.com/return',
+                    data
+                })
+                .then(response => {
+                    res.render('return', { title: 'Returns', data: response.data, returns });
+                })
+                .catch(err => {
+                    console.error(err);
+                    res.render('error', { title: 'Server Error' });
+                });
+            }
+        });
+    } else {
+        console.error('Token verification failed');
+        res.redirect('/');
+    }
+}
+
 module.exports = {
-    investment_get
+    investment_get,
+    return_get
 };
