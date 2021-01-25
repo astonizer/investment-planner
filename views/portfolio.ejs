@@ -1,72 +1,61 @@
 <%- include('partials/header.ejs') %>
 
+<div class="investment-plots container text-center">
+    <div class=”row align-items-center”>
+        <div class=”col-6”>
+            <h1 class="my-2">Your Investment Details</h1>
+        </div>
+        <div class="col-6">
+            <div id="investment-graph" class="align-self-center"></div>
+        </div>
+    </div>
+    </div>
+        <h3>Investments</h3><br>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                    <div class="carousel-item{% if loop.index == 1 %} active{% endif %}">
+                        <div id="myDiv"></div>
+                    </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
 </div>
-<div class="my-5 text-center">
-    <h3>Total Investments : <%= data.total_inv %> INR</h1>
-    <% if(data.net_pl >= data.total) { %>
-        <% let diff = data.net_pl - data.total %>
-        <h3>Net Asset Value (NAV) : <%= data.net_pl %> INR <span class="text-success">(+<%= diff %>)</span></h3>
-    <% } else { %>
-        <% let diff = data.total - data.net_pl %>
-        <h3>Net Asset Value (NAV) : <%= data.net_pl %> INR <span class="text-danger">(-<%= diff %>)</span></h3>
-    <% } %>
-    <h3>Return on Investment (ROI): <%= data.roi %> %</h3>
-    <h3>Compound Annual Growth Rate (CAGR): <%= data.cagr %> %</h3>
-    <br><br>
 
-    <table class="table table-bordered table-dark my-5 text-center">
-        <thead>
-            <tr>
-                <th scope="col">S. No.</th>
-                <th scope="col">Date</th>
-                <th scope="col">Symbol</th>
-                <th scope="col">Category</th>
-                <th scope="col">Name</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Buying Price(INR)</th>
-                <th scope="col">Current Price(INR)</th>
-                <th scope="col">% Change</th>
-                <th scope="col">Beta</th>
-                <th scope="col">Sell</th>
-            </tr>
-            </thead>
-            <tbody>
-            <% let N = data.types.length %>
-            <% for(let id = 0; id < N; id++) { %>
-                <tr>
-                <th scope="row"><%= id+1 %></th>
-                <td><%= data.date[id] %></td>
-                <td><%= data.symbol[id] %></td>
-                <td><%= data.types[id] %></td>
-                <td><a href="#"><%= investments[id].Symbol %></a></td>
-                <td><%= investments[id].Quantity %></td>
-                <td><%= investments[id].buyPrice %></td>
-                <td><%= data.price[id] %></td>
-                <td><%= data.percent_change[id] %></td>
-                <td><%= data.beta[id] %></td>
-                <td>
-                    <form action="/sell/asset" method="POST" class="container">
-                        <div class="form-row align-items-center justify-content-center">
-                            <div class="col-auto">
-                                <input type="number" name="quantity" class="form-control mb-2" placeholder="Quantity" min="1" max="<%= investments[id].Quantity %>">
-                            </div>
-                            <input name="asset" hidden value="<%= investments[id].Symbol %>">
-                            <input name="date" hidden value="<%= investments[id].Date %>">
-                            <input type="number" name="buyPrice" hidden value="<%= investments[id].buyPrice %>"></input>
-                            <input type="number" name="currentPrice" hidden value="<%= data.price[id] %>">
-                            <input name="type" hidden value="<%=data.types[id] %>">
-                            <div class="col-auto mx-2">
-                                <button type="submit" class="btn btn-primary mb-2">Sell</button>
-                            </div>
-                        </div>
-                    </form>
-                </td>
-                </tr>
-            <% } %>
-        </tbody>
-      </table>
-    
-</div>
-<div class="container">
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+
+    fetch('url', {
+        method: 'GET'
+    })
+    .then(graphData => {
+        console.log(graphData);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+    // category plot
+    let data = [{
+        values: [19, 26, 55],
+        labels: ['Small Cap', 'Mid Cap', 'Large Cap'],
+        type: 'pie'
+    }];
+
+    let layout = {
+        height: 400,
+        width: 500
+    };
+
+
+    // Plotly.newPlot('myDiv', trace);
+    Plotly.newPlot('investment-graph', data, layout);
+</script>
 
 <%- include('partials/footer.ejs') %>

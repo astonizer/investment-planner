@@ -13,7 +13,7 @@ sell_post = (req, res) => {
     let returns = {
         Symbol: asset,
         Type: type,
-        buyPrice: buyPrice,
+        buyPrice: buyPrice * quantity,
         sellPrice: currentPrice * quantity,
         Quantity: quantity,
         buyDate: date,
@@ -48,31 +48,13 @@ sell_post = (req, res) => {
                                     res.redirect('/portfolio/investments');
                                 } else {
                                     try {
-                                        // simultaneously update the quantity in returns if exists
-                                        User.updateOne({ 
-                                            _id: decodedToken.id, 
-                                            "returns.Symbol": asset 
-                                        }, { 
-                                            $inc: { "returns.$.Quantity": quantity } 
-                                        },(err, result) => {
-                                            if(err) {
-                                                try {
-                                                    // if doesn't exist then add the return object to db
-                                                    User.updateOne(
-                                                        { _id: decodedToken.id }, 
-                                                        { $push: { returns } },
-                                                        () => { 
-                                                            res.redirect('/') 
-                                                        });        
-                                                }
-                                                catch(err) {
-                                                    console.log(err);
-                                                    res.redirect('/investments/planner');
-                                                }
-                                            } else {
-                                                res.redirect('/');
-                                            }
-                                        });
+                                        // if doesn't exist then add the return object to db
+                                        User.updateOne(
+                                            { _id: decodedToken.id }, 
+                                            { $push: { returns } },
+                                            () => { 
+                                                res.redirect('/') 
+                                            });    
                                     }
                                     catch (err) {
                                         console.log(err);

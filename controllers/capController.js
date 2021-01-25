@@ -32,7 +32,7 @@ smallCap_get = async (req, res) => {
                 smallCapData.map((smallAsset, id) => {
                     smallAsset.Price = response.data[id];
                 });
-                res.render('assets', { title: 'Small Cap', data: smallCapData });
+                res.render('assets', { title: 'Small Cap', data: smallCapData, type: 'small' });
             })
             .catch(err => {
                 console.error(err);
@@ -112,7 +112,7 @@ midCap_get = (req, res) => {
                 midCapData.map((midAsset, id) => {
                     midAsset.Price = response.data[id];
                 });
-                res.render('assets', { title: 'Small Cap', data: midCapData });
+                res.render('assets', { title: 'Mid Cap', data: midCapData, type: 'mid' });
             })
             .catch(err => {
                 console.error(err);
@@ -196,7 +196,7 @@ largeCap_get = (req, res) => {
                 largeCapData.map((largeAsset, id) => {
                     largeAsset.Price = response.data[id];
                 });
-                res.render('assets', { title: 'Small Cap', data: largeCapData });
+                res.render('assets', { title: 'Large Cap', data: largeCapData, type: 'large' });
             })
             .catch(err => {
                 console.error(err);
@@ -215,7 +215,7 @@ largeCap_post = (req, res) => {
         Quantity: quantity,
         Date: currentDate
     };
-
+    console.log(investment);
     // get user details
     try {
         const token = req.cookies.jwt;

@@ -2,10 +2,10 @@
 
 <div class="container text-center my-3">
     <% if(data.net_pl >= 0) { %>
-        <h3 style="color: green;">Net Profit : <%= data.net_pl %> INR</h3>
+        <h3 style="color: green;">Net Profit : <%= data.net_pl.toFixed(2) %> INR</h3>
     <% } else { %>
         <% let loss = data.net_pl * (-1) %>
-        <h3 style="color: red;">Net Loss : <%= data.loss %> INR</h3>
+        <h3 style="color: red;">Net Loss : <%= data.loss.toFixed(2) %> INR</h3>
     <% } %>
 </div>
 
