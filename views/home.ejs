@@ -1,6 +1,45 @@
 <%- include('partials/header.ejs') %>
 
-<h1>Home Page</h1>
-<a href="/cap">Start Analysing</a>
+<style>
+    body {
+        height: 100%;
+        background: rgba(0, 0, 0, 0) linear-gradient(166deg, rgb(98, 183, 212), rgb(72, 109, 74)) repeat scroll 0% 0%;
+    }
+</style>
+
+<div class="home_screen container-fluid img-responsive my-3 py-1">
+    <div class="row">
+        <div class="col-sm home_info align-middle">
+            <h4>Remain up-to-date with the present market and 
+                don't stop earning with this investment guide
+                specially designed for beginners</h4><br>
+            <a href="/cap" class="home_button text-center">Trade</a>
+        </div>
+        <div class="col-sm">
+            <img src="assets/stocks.png" alt="Stocks">
+        </div>
+    </div><br><br>
+    <div class="home_quote text-center my-3">
+        <h4>"Don't look for the needle in the haystack. Just buy the haystack!"</h4>
+        <span class="author">— John Bogle</span><br>
+    </div>
+    <div class="home_cards my-5">
+        <div class="card" style="width: 18rem;">
+            <div class="card_body_bg">
+                <p class="card-text">Analyse your investments graphically and plan accordingly</p>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <div class="card_body_bg">
+                <p class="card-text">Invest and sell your stocks seeing the latest market prices</p>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <div class="card_body_bg">
+                <p class="card-text">Simple and user friendly interface for efficient trading</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 <%- include('partials/footer.ejs') %>

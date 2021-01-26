@@ -16,52 +16,25 @@ portfolio_get = async (req, res) => {
             } else {
                 
                 // fetch user details from db
-                // const { investments } = await User.findById(decodedToken.id);
-                // const data = {
-                //     Investments: investments,
-                //     Returns: returns
-                // };
-
-                // // fetch investments analysis from api
-                // axios({
-                //     method: 'POST',
-                //     url: 'https://yfinance-node.herokuapp.com/',
-                //     data
-                // })
-                // .then(response => {
-                    res.render('portfolio', { title: 'Portfolio', traces });
-                // })
-                // .catch(err => {
-                //     console.error(err);
-                //     res.render('error', { title: 'Server Error' });
-                // });
+                const { investments } = await User.findById(decodedToken.id);
+                let tot = [0,0,0]
+                investments.map(investment => {
+                    if(investment.Type === "small-cap") {
+                        tot[0] += investment.Quantity * investment.buyPrice;
+                    } else if(investment.Type === "mid-cap") {
+                        tot[1] += investment.Quantity * investment.buyPrice;
+                    } else {
+                        tot[2] += investment.Quantity * investment.buyPrice;
+                    }
+                });
+                
+                res.render('portfolio', { title: 'Portfolio', tot });
             }
         });
     } else {
         console.error('Token verification failed');
         res.redirect('/');
     }
-}
-
-portfolio_graphs = (req, res) => {
-    let graphData = {
-        category: {
-            smallCap: 0,
-            midCap: 0,
-            largeCap: 0
-        },
-        stockPrices: [
-            {
-                x: [1, 2, 3, 4],
-                y: [10, 15, 13, 17]
-            },
-            {
-                x: [1, 2, 3, 4],
-                y: [10, 15, 13, 17]
-            }
-        ]
-    }
-    res.json()
 }
 
 investment_get = async (req, res) => {
@@ -84,7 +57,7 @@ investment_get = async (req, res) => {
                 // fetch investments analysis from api
                 axios({
                     method: 'POST',
-                    url: 'http://127.0.0.1:5000/investment',
+                    url: 'https://yfinance-node.herokuapp.com/investment',
                     data
                 })
                 .then(response => {

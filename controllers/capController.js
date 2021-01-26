@@ -71,7 +71,7 @@ smallCap_post = (req, res) => {
                         User.updateOne(
                             { _id: decodedToken.id }, 
                             { $push: { investments: investment } },
-                            () => { res.redirect('/') }
+                            () => { res.redirect('/portfolio/investments') }
                         );
                     } 
                     catch(err) {
@@ -150,7 +150,7 @@ midCap_post = (req, res) => {
                         User.updateOne(
                             { _id: decodedToken.id }, 
                             { $push: { investments: investment } },
-                            () => { res.redirect('/') }
+                            () => { res.redirect('/portfolio/investments') }
                         );
                     } 
                     catch(err) {
@@ -234,7 +234,7 @@ largeCap_post = (req, res) => {
                         User.updateOne(
                             { _id: decodedToken.id }, 
                             { $push: { investments: investment } },
-                            () => { res.redirect('/') }
+                            () => { res.redirect('/portfolio/investments') }
                         );
                     } 
                     catch(err) {

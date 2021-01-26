@@ -1,3 +1,8 @@
+body {
+    height: 100vh;
+    background: rgba(0, 0, 0, 0) linear-gradient(166deg, rgb(98, 183, 212), rgb(72, 109, 74)) repeat scroll 0% 0%;
+}
+
 .email-error {
     margin-right: 5%;
 }
@@ -8,4 +13,96 @@
 
 .name-error {
     margin-left: 5%;
+}
+
+.home_button {
+    color: black;
+    font-size: 3em;
+    margin-left: 0%;
+    display: block;
+    padding: 0 5%;
+    border-radius: 10%;
+    border: 2px solid rgb(33, 72, 85);
+    transition: 0.2s ease-in-out;
+}
+
+.home_button:hover {
+    transition: 0.2s ease-in-out;
+    color: rgb(104, 56, 56);
+    font-size: 3.3em;
+    margin-left: 0%;
+    text-decoration: none;
+    border: 2px solid rgb(19, 44, 53);
+}
+
+.home_cards {
+    display: flex;
+    justify-content: space-between;
+}
+
+.author {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 18%;
+}
+
+.home_info {
+    margin-top: 12%;
+}
+
+.card_body_bg {
+    border-radius: 15%;
+    background: rgba(0, 0, 0, 0) linear-gradient(180deg, rgb(79, 154, 179), rgb(72, 109, 74)) repeat scroll 0% 0%;
+}
+
+.card {
+    border: none;
+    border-radius: 15%;
+}
+
+.card-text {
+    font-size: 1.3em;
+    color:black;
+    padding: 20.5% 10%;
+}
+
+.form-control {
+    background: none;
+}
+.form-control:focus {
+    background: none;
+}
+
+.btn {
+    background-color: rgb(49, 104, 122);
+}
+
+.btn:hover {
+    background-color: rgb(71, 143, 167);
+}
+
+.media_links > li > a {
+    color: black;
+}
+
+.cap_button {
+    color: black;
+    margin-left: 0%;
+    padding: 0 5%;
+    border-radius: 10%;
+    border: 2px solid rgb(33, 72, 85);
+    transition: 0.2s ease-in-out;
+}
+
+.cap_button:hover {
+    color: rgb(51, 46, 46);
+    margin-left: 0%;
+    padding: 0 5%;
+    border-radius: 10%;
+    border: 2px solid rgb(33, 72, 85);
+    transition: 0.2s ease-in-out;
+}
+
+#investment-graph {
+    margin-left: 25%;
 }

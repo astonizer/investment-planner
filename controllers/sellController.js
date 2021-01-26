@@ -53,7 +53,7 @@ sell_post = (req, res) => {
                                             { _id: decodedToken.id }, 
                                             { $push: { returns } },
                                             () => { 
-                                                res.redirect('/') 
+                                                res.redirect('/portfolio/returns') 
                                             });    
                                     }
                                     catch (err) {

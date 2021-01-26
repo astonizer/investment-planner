@@ -4,62 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
     <title><%= title %> | Investment Planner</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
         <div class="container">
             <% if(user) { %>
-                <a class="navbar-brand text-light" href="/">Welcome <span class="text-info"><%= user.name %></span></a>
+                <a class="navbar-brand text-dark" href="/">Welcome <span class="text-secondary"><%= user.name %></span></a>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="/portfolio">Portfolio</a>
+                            <a class="nav-link text-dark" href="/portfolio">Portfolio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="/portfolio/investments">Investments</a>
+                            <a class="nav-link text-dark" href="/portfolio/investments">Investments</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="/portfolio/returns">Returns</a>
+                            <a class="nav-link text-dark" href="/portfolio/returns">Returns</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link text-light" href="/logout">Logout</a>
+                            <a class="nav-link text-dark" href="/logout">Logout</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 More
                             </a>
-                            <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item text-light" href="/terms">Terms & Conditions</a>
-                                <a class="dropdown-item text-light" href="/about">About Us</a>
-                                <a class="dropdown-item text-light" href="#">Give Feedback</a>
+                            <div class="dropdown-menu bg-transparent" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item text-dark" href="/terms">Terms & Conditions</a>
+                                <a class="dropdown-item text-dark" href="/about">About Us</a>
+                                <a class="dropdown-item text-dark" href="https://github.com/astonizer/investment-planner">Github</a>
                             </div>
                         </li>
                     </ul>
                 </div>
             <% } else { %>
-                <a class="navbar-brand text-light" href="/">Investment Planner</a>
+                <a class="navbar-brand text-dark" href="/">Investment Planner</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="/">Home</a>
+                            <a class="nav-link text-dark" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="/signup">Signup</a>
+                            <a class="nav-link text-dark" href="/signup">Signup</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="/login">Login</a>
+                            <a class="nav-link text-dark" href="/login">Login</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             More
                             </a>
-                            <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item text-light" href="/terms">Terms and Conditions</a>
-                                <a class="dropdown-item text-light" href="/about">About Us</a>
+                            <div class="dropdown-menu bg-transparent" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item text-dark" href="/terms">Terms and Conditions</a>
+                                <a class="dropdown-item text-dark" href="/about">About Us</a>
+                                <a class="dropdown-item text-dark" href="https://github.com/astonizer/investment-planner">Github</a>
                             </div>
                         </li>
                     </ul>

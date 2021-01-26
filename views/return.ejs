@@ -1,5 +1,24 @@
 <%- include('partials/header.ejs') %>
 
+<style>
+  body {
+    height: 100vh;
+    background: rgba(0, 0, 0, 0) linear-gradient(166deg, rgb(98, 183, 212), rgb(72, 109, 74)) repeat scroll 0% 0%;
+  }
+  .form-control {
+    background: none;
+  }
+  .form-control:focus {
+    background: none;
+  }
+  .btn {
+    background-color: rgb(49, 104, 122);
+  }
+  .btn:hover {
+    background-color: rgb(71, 143, 167);
+  }
+</style>
+
 <div class="container text-center my-3">
     <% if(data.net_pl >= 0) { %>
         <h3 style="color: green;">Net Profit : <%= data.net_pl.toFixed(2) %> INR</h3>
@@ -9,7 +28,7 @@
     <% } %>
 </div>
 
-<table class="table table-bordered table-dark my-3 text-center">
+<table class="table table-bordered my-3 text-center">
   <thead>
     <tr>
       <th scope="col">S. No.</th>
@@ -29,7 +48,7 @@
         <th scope="row"><%= id+1 %></th>
         <td scope="row"><%= returns[id].buyDate %></td>
         <td><%= returns[id].sellDate %></td>
-        <td><a href = "#"><%= returns[id].Symbol %></a></td>
+        <td><%= returns[id].Symbol %></td>
         <td><%= returns[id].Type %></td>
         <td><%= returns[id].Quantity %></td>
         <td><%= returns[id].buyPrice %></td>
