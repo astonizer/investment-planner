@@ -2,7 +2,9 @@
 
 Web app to help students in building their investment portfolio.<br>
 Invest, sell, analyse and stay up-to-date with the latest market.<br>
-All featured in this really simple user interface
+All featured in this really simple user interface<br>
+
+[Live Website](https://investmentplanner.herokuapp.com/)
 
 ### Tech Used
 
