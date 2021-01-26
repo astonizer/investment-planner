@@ -84,7 +84,7 @@ investment_get = async (req, res) => {
                 // fetch investments analysis from api
                 axios({
                     method: 'POST',
-                    url: 'https://yfinance-node.herokuapp.com/investment',
+                    url: 'http://127.0.0.1:5000/investment',
                     data
                 })
                 .then(response => {
